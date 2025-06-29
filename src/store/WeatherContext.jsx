@@ -1,23 +1,23 @@
 import { createContext, useRef } from "react";
 import { useState } from "react";
 
-export const WheatherContext = createContext();
+export const WeatherContext = createContext();
 
-const WheatherContextProvider = ({children}) => {
+const WeatherContextProvider = ({children}) => {
     const [city, setCity] = useState('');
     const [fetchedCity, setFetchedCity] = useState('')
-    const [wheather, setWheather] = useState(null);
+    const [weather, setWeather] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
     const [selectedTab, setSelectedTab] = useState('Today');
 
 
     return (
-    <WheatherContext.Provider value={{city, setCity, fetchedCity, setFetchedCity, wheather, setWheather, error, setError, loading,
+    <WeatherContext.Provider value={{city, setCity, fetchedCity, setFetchedCity, weather, setWeather, error, setError, loading,
         setLoading, selectedTab, setSelectedTab}}>
         {children}
-    </WheatherContext.Provider>
+    </WeatherContext.Provider>
     );
 };
 
-export default WheatherContextProvider;
+export default WeatherContextProvider;
