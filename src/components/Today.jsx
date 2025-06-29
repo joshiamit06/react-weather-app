@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { WeatherContext } from '../store/WeatherContext';
 
 function Today() {
-  const { weather, fetchedCity } = useContext(WeatherContext);
+  const { weather } = useContext(WeatherContext);
   const { location, current } = weather;
 
   return (
@@ -20,7 +20,7 @@ function Today() {
 
         {/* Temperature */}
         <div className="text-4xl font-bold text-blue-600">
-          {current.feelslike_c}°C
+          {current.temp_c}°C
         </div>
       </div>
     </div>

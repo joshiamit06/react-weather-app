@@ -1,32 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { WeatherContext } from '../store/WeatherContext'
 
 function Hourly() {
-  const {city} = useContext(WeatherContext)
-  const [hourData, setHourData] = useState([])
-  console.log("hour data: ",hourData)
+  const {weather} = useContext(WeatherContext)
+  const {forecast} = weather
   const date = new Date()
   const currHours = date.getHours()
 
-  useEffect(()=> {
-   const hourlyData = async () => {
-    try{
-      const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?q=${city}&days=1&key=ec73a4631e3f4d5899690729251203`)
-      const result = await response.json()
-      console.log("hourly result: ", result.forecast.forecastday[0].hour)
-      setHourData(result.forecast.forecastday[0].hour)
-
-    } catch(error) {
-      console.log(error)
-
-    }
-   }
-   hourlyData()
-
-  },[])
   return (
     <div className="flex gap-4 overflow-x-auto py-4">
-      {hourData.map((data, index) => (data.time.split(" ")[1].split(":")[0] >= currHours &&
+      {forecast.forecastday[0].hour.map((data, index) => (data.time.split(" ")[1].split(":")[0] >= currHours &&
         <div
           key={index}
           className="flex flex-col justify-between items-center w-28 min-w-[7rem] h-64 bg-white rounded-2xl shadow-md p-4 text-center"

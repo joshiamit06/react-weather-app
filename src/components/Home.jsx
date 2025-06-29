@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { WeatherContext } from "../store/WeatherContext";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "./Layout";
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
           setError(null);
           setWeather(null);
           const response = await fetch(
-            `https://api.weatherapi.com/v1/current.json?q=${city}&key=ec73a4631e3f4d5899690729251203`,
+            `https://api.weatherapi.com/v1/forecast.json?q=${city}&days=14&key=ec73a4631e3f4d5899690729251203`,
             {
               method: "GET",
               mode: "cors",

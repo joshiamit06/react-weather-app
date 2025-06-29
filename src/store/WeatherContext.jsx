@@ -1,4 +1,4 @@
-import { createContext, useRef } from "react";
+import { createContext } from "react";
 import { useState } from "react";
 
 export const WeatherContext = createContext();
@@ -9,12 +9,11 @@ const WeatherContextProvider = ({children}) => {
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
-    const [selectedTab, setSelectedTab] = useState('Today');
 
 
     return (
     <WeatherContext.Provider value={{city, setCity, fetchedCity, setFetchedCity, weather, setWeather, error, setError, loading,
-        setLoading, selectedTab, setSelectedTab}}>
+        setLoading}}>
         {children}
     </WeatherContext.Provider>
     );
