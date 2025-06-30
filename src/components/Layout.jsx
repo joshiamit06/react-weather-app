@@ -1,6 +1,7 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 
 const Layout = () => {
+  const { city } = useParams(); 
   const navLinkClass = ({ isActive }) =>
     `px-4 py-2 rounded-md font-medium transition-colors duration-200
      ${isActive
@@ -12,13 +13,13 @@ const Layout = () => {
       {/* Navbar */}
       <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-center gap-8">
-          <NavLink to="/today" className={navLinkClass}>
+          <NavLink to={`/${city}/today`} className={navLinkClass}>
             Today
           </NavLink>
-          <NavLink to="/hourly" className={navLinkClass}>
+          <NavLink to={`/${city}/hourly`} className={navLinkClass}>
             Hourly
           </NavLink>
-          <NavLink to="/daily" className={navLinkClass}>
+          <NavLink to={`/${city}/daily`} className={navLinkClass}>
             Daily
           </NavLink>
         </div>

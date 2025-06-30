@@ -11,13 +11,17 @@ import Daily from './components/Daily.jsx'
 const router = createBrowserRouter([
   {
   path:'/',
-  element: <Home/>,
-  children:[
+  element: <Home/>
+  },
+  {
+    path:"/:city",
+    element: <Home/>,
+    children:[
       {path:'today', element: <Today/>},
       {path:'hourly', element: <Hourly/>},
       {path:'daily', element: <Daily/>}  
     ]
-  },
+  }
 ])
 
 
